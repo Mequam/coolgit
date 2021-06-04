@@ -1,0 +1,3 @@
+[submodule "text-effect"]
+	path = text-effect
+	url = https://github.com/Mequam/text-effect.git

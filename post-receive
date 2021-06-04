@@ -1,0 +1,13 @@
+#!/bin/bash
+#
+# An example hook script to prepare a packed repository for use over
+# dumb transports.
+#
+# To enable this hook, rename this file to "post-update".
+source /repos/bin/sound_manip.sh
+
+export TERM=linux
+echo > /dev/tty1
+for i in $(git log --all -1 --stat --format='[%G%an%V@%R%ci%V] %Y%h%V | %s %C%d%V' | tr ' ' _); do color_effect $(echo $i | tr _ ' '); done > /dev/tty1 &
+bark=$(get_bark /repos/bin/glados || (reset_barks /repos/bin/glados && get_bark /repos/bin/glados)) > /dev/null 2>&1
+play_bark /repos/bin/glados $bark > /dev/null 2>&1 &
