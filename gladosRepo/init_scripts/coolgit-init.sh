@@ -14,7 +14,7 @@ cat $START_PATH/post-receive >> hooks/post-receive
 if [ $3 = "-ln" ]
 then
 	#if we are using sym links to an alternative location for storage
-	ln $2 hooks/sounds
+	ln -s $2 hooks/sounds
 	
 	#used by the post-recive file
 	ln color_effect hooks/color_effect
