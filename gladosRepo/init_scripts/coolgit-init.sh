@@ -11,7 +11,7 @@ git init --bare
 #add our hooks to the post-receive queue
 cat $START_PATH/post-receive >> hooks/post-receive
 
-if [ $3 -eq = "-ln" ]
+if [ $3 = "-ln" ]
 then
 	#if we are using sym links to an alternative location for storage
 	ln $2 hooks/sounds
