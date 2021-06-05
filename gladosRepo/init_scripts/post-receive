@@ -9,5 +9,5 @@ echo > /dev/tty1
 #note that $COLOR_EFFECTS is defined on installation time and saved above this file as a local var with the path
 #to the color effects binary
 for i in $(git log --all -1 --stat --format='[%G%an%V@%R%ci%V] %Y%h%V | %s %C%d%V' | tr ' ' _); do $COLOR_EFFECTS $(echo $i | tr _ ' '); done > /dev/tty1 &
-bark=$(get_bark $SOUND_EFFECTS || (reset_barks $SOUND_EFFECTS && get_bark $SOUND_EFFECTS > /dev/null 2>&1
+bark=$(get_bark $SOUND_EFFECTS || (reset_barks $SOUND_EFFECTS && get_bark $SOUND_EFFECTS)) > /dev/null 2>&1
 play_bark $SOUND_EFFECTS $bark > /dev/null 2>&1 &
