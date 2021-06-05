@@ -12,7 +12,7 @@ git init --bare
 test -f hooks/post-receive || echo \#!/bin/bash > hooks/post-receive 
 #create the first lines of the post-recive file to tell it where to find the color_effects file
 
-echo COLOR_EFFECTS=$START_PATH/color_effects.sh >> hooks/post-receive
+echo COLOR_EFFECTS=$START_PATH/color_effect >> hooks/post-receive
 echo SOUND_EFFECTS=$2 >> hooks/post-receive
 #include the sound library
 cat $START_PATH/sound_manip.sh >> hooks/post-receive
