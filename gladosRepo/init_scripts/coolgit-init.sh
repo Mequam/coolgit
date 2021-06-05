@@ -17,14 +17,14 @@ then
 	ln -s $2 hooks/sounds
 	
 	#used by the post-recive file
-	ln color_effect hooks/color_effect
+	ln $START_PATH/color_effect hooks/color_effect
 else
 	#just copy the file as is (well with the name sounds)
 	mkdir hooks/sounds
 	cp -r $2/* hooks/sounds
 	
 	#used by the post-recive file
-	cp color_effect hooks/color_effect
+	cp $START_PATH/color_effect hooks/color_effect
 fi
 
 #add a hook to the end of the scripts that we run to make sure that every file we recive can be accessed by all members of the group
