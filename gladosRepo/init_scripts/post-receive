@@ -1,13 +1,15 @@
 #!/bin/bash
-#
 # This file is a hook for the cool git repository that runs sounds
 # and a fun text effect when somthing is pushed to the repository
 #
 # To enable this hook, rename this file to "post-update". or place a reference to this file in post-update
-source sound_manip.sh
+source $SOUND_LIBRARY
 
 export TERM=linux
 echo > /dev/tty1
-for i in $(git log --all -1 --stat --format='[%G%an%V@%R%ci%V] %Y%h%V | %s %C%d%V' | tr ' ' _); do color_effect $(echo $i | tr _ ' '); done > /dev/tty1 &
-bark=$(get_bark /repos/bin/glados || (reset_barks /repos/bin/glados && get_bark /repos/bin/glados)) > /dev/null 2>&1
-play_bark /repos/bin/glados $bark > /dev/null 2>&1 &
+#print out the log in a cool maner
+#note that $COLOR_EFFECTS is defined on installation time and saved above this file as a local var with the path
+#to the color effects binary
+for i in $(git log --all -1 --stat --format='[%G%an%V@%R%ci%V] %Y%h%V | %s %C%d%V' | tr ' ' _); do $COLOR_EFFECTS $(echo $i | tr _ ' '); done > /dev/tty1 &
+bark=$(get_bark $SOUND_EFFECTS || (reset_barks $SOUND_EFFECTS && get_bark $SOUND_EFFECTS > /dev/null 2>&1
+play_bark $SOUND_EFFECTS $bark > /dev/null 2>&1 &
