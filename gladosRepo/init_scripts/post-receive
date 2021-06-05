@@ -3,8 +3,6 @@
 # and a fun text effect when somthing is pushed to the repository
 #
 # To enable this hook, rename this file to "post-update". or place a reference to this file in post-update
-source $SOUND_LIBRARY
-
 export TERM=linux
 echo > /dev/tty1
 #print out the log in a cool maner
