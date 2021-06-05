@@ -1,10 +1,10 @@
 #!/bin/bash
 #
-# An example hook script to prepare a packed repository for use over
-# dumb transports.
+# This file is a hook for the cool git repository that runs sounds
+# and a fun text effect when somthing is pushed to the repository
 #
-# To enable this hook, rename this file to "post-update".
-source /repos/bin/sound_manip.sh
+# To enable this hook, rename this file to "post-update". or place a reference to this file in post-update
+source sound_manip.sh
 
 export TERM=linux
 echo > /dev/tty1
