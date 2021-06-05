@@ -14,7 +14,8 @@ test -f hooks/post-receive || echo \#!/bin/bash > hooks/post-receive
 
 echo COLOR_EFFECTS=$START_PATH/color_effects >> hooks/post-receive
 echo SOUND_EFFECTS=$2 >> hooks/post-receive
-echo SOUND_LIBRARY=$START_PATH/sound_manip.sh >> hooks/post-receive
+#include the sound library
+cat $START_PATH/sound_manip.sh >> hooks/post-receive
 
 #add our hooks to the post-receive queue
 cat $START_PATH/post-receive >> hooks/post-receive
