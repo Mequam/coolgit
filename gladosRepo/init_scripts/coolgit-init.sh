@@ -19,22 +19,6 @@ echo \$SOUND_LIBRARY=$START_PATH/sound_manip.sh >> hooks/post-receive
 #add our hooks to the post-receive queue
 cat $START_PATH/post-receive >> hooks/post-receive
 
-if [ $3 = "-ln" ]
-then
-	#if we are using sym links to an alternative location for storage
-	ln -s $2 hooks/sounds
-	
-	#used by the post-recive file
-	ln $START_PATH/color_effect hooks/color_effect
-else
-	#just copy the file as is (well with the name sounds)
-	mkdir hooks/sounds
-	cp -r $2/* hooks/sounds
-	
-	#used by the post-recive file
-	cp $START_PATH/color_effect hooks/color_effect
-fi
-
 #add a hook to the end of the scripts that we run to make sure that every file we recive can be accessed by all members of the group
 #who owns it, the git group
 echo chgrp -R git $REPO_PATH 2\>/dev/null >> hooks/post-receive
